@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="bgc">
+  <div class="container">
+    <div class="header">
+      <h1><span class="l">L</span>OGIN</h1>
+    </div>
+
+   <form method="post" action="{% url 'login' %}">
+
+      {% csrf_token %}
+      
+      <!-- Django expects these field names: username + password -->
+      <label for="id_username">Username</label>
+      <input type="text" class="inp" name="username" id="id_username" required>
+
+      <label for="id_password">Password</label>
+      <input type="password" class="inp" name="password" id="id_password" required>
+
+      <button type="submit">Enter</button>
+    </form>
+
+    <!-- Show login errors if any -->
+    {% if form.errors %}
+      <div class="alert alert-danger mt-3">
+        {{ form.errors }}
+      </div>
+    {% endif %}
+
+    <div class="signup">
+      <b>Don't have an account?</b>
+      <a href="#">Sign up</a> <!-- needs a signup view -->
+    </div>
+  </div>
+</div>
+{% endblock %}

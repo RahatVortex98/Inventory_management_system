@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+  <!--for demo wrap-->
+  <h1>Inventory </h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Quantity In Stock</th>
+          <th>Quantity Sold</th>
+          <th>Cost Per Item</th>
+          <th>Sales or Revenue</th>
+          <th>Stocked Date</th>
+          <th>Last Sale Date</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for inventory in inventories %}
+        <tr>
+            <th>{{forloop.counter}}</th>
+            <th>{{inventory.name}}</th>
+            <th>{{inventory.quantity_in_stock}}</th>
+            <th>{{inventory.quantity_sold}}</th>
+            <th>{{inventory.cost_per_item}}</th>
+            <th>{{inventory.sales}}</th>
+            <th>{{inventory.stock_date}}</th>
+            <th>{{inventory.last_sales_date}}</th>
+            <th>
+  <a href="{% url 'product' inventory.id %}" class="btn btn-primary">Detail</a>
+            </th>
+
+        </tr>
+      </tbody>
+
+      {% endfor %}
+
+    </table>
+  </div>
+  {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-5 text-center" style="max-width: 400px;">
+    <h2 class="mb-4">You have been logged out</h2>
+    <p class="mb-4">Thank you for visiting. See you soon!</p>
+    <a href="{% url 'login' %}" class="btn btn-primary w-100">Login Again</a>
+  </div>
+</div>
+{% endblock %}

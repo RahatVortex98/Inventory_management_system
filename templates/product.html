@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} Inventory Detail - {{ inventory.name }} {% endblock title %}
+{% block content %}
+
+<div class="content-section">
+    <h2>{{ inventory.name }}</h2>
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Cost per Item:</strong> ${{ inventory.cost_per_item }}</li>
+        <li class="list-group-item"><strong>Quantity in Stock:</strong> {{ inventory.quantity_in_stock }}</li>
+        <li class="list-group-item"><strong>Quantity Sold:</strong> {{ inventory.quantity_sold }}</li>
+        <li class="list-group-item"><strong>Total Sales:</strong> ${{ inventory.sales }}</li>
+        <li class="list-group-item"><strong>Stock Date:</strong> {{ inventory.stock_date }}</li>
+        <li class="list-group-item"><strong>Last Sales Date:</strong> {{ inventory.last_sales_date }}</li>
+    </ul>
+
+    {% comment %} <div class="mt-3">
+        <a href="{% url 'inventory_list' %}" class="btn btn-secondary">Back to Inventory</a>
+        <a href="{% url 'inventory_update' inventory.id %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'inventory_delete' inventory.id %}" class="btn btn-danger">Delete</a>
+    </div> {% endcomment %}
+</div>
+
+{% endblock content %}
