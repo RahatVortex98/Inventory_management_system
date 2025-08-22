@@ -16,6 +16,10 @@
           <th>Sales or Revenue</th>
           <th>Stocked Date</th>
           <th>Last Sale Date</th>
+          
+          <th>Product Details</th>
+          <th>Remove Product</th>
+          <th>Update Product</th>
         </tr>
       </thead>
       <tbody>
@@ -30,8 +34,15 @@
             <th>{{inventory.sales}}</th>
             <th>{{inventory.stock_date}}</th>
             <th>{{inventory.last_sales_date}}</th>
+             
             <th>
   <a href="{% url 'product' inventory.id %}" class="btn btn-primary">Detail</a>
+            </th>
+             <th>
+  <a href="{% url 'remove' inventory.id %}" class="btn btn-danger">Remove</a>
+            </th>
+            <th>
+  <a href="{% url 'update' inventory.id %}" class="btn btn-info">Update</a>
             </th>
 
         </tr>

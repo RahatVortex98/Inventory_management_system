@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .chart {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        @media(max-width: 900px){
+            .dashboard{
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>📊 Inventory Dashboard</h2>
+    <div class="dashboard">
+        <div class="chart">
+            <div id="sales_graph"></div>
+            <script>
+                var graph = {{ sales_graph|safe }};
+                Plotly.newPlot('sales_graph', graph.data, graph.layout);
+            </script>
+        </div>
+        <div class="chart">
+            <div id="stock_graph"></div>
+            <script>
+                var graph = {{ stock_graph|safe }};
+                Plotly.newPlot('stock_graph', graph.data, graph.layout);
+            </script>
+        </div>
+        <div class="chart">
+            <div id="best_product_graph"></div>
+            <script>
+                var graph = {{ best_product_graph|safe }};
+                Plotly.newPlot('best_product_graph', graph.data, graph.layout);
+            </script>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}
